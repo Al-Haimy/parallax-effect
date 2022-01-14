@@ -6,9 +6,18 @@
     Version: 1.0
     Author: AlHaimi
  */
-add_filter('the_content', 'addToEndOfPost');
 
-function addToEndOfPost($content)
+class WordCountAndTimePlugin
 {
-    return $content . '<p>My name is Alhaimi</p>';
 }
+add_action('admin_menu', 'ourPluginSettingsLink');
+function ourPluginSettingsLink()
+{
+    add_options_page('Word Count Settings', 'Word Count', 'manage_options', 'word-count-settings', 'ourSettingsPage');
+}
+
+function ourSettingsPage()
+{ ?>
+
+    Hello Word from our pluggin
+<?php }
