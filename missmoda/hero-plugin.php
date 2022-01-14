@@ -10,6 +10,8 @@
 class WordCountAndTimePlugin
 {
 }
+
+new WordCountAndTimePlugin();
 add_action('admin_menu', 'ourPluginSettingsLink');
 function ourPluginSettingsLink()
 {
