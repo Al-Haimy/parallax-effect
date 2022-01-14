@@ -11,7 +11,7 @@ class WordCountAndTimePlugin
 {
 }
 
-new WordCountAndTimePlugin();
+$wordCountAndTimePlugin = new WordCountAndTimePlugin();
 add_action('admin_menu', 'ourPluginSettingsLink');
 function ourPluginSettingsLink()
 {
