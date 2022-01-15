@@ -5,6 +5,8 @@
     Descripption: Herro for dynamic custom post
     Version: 1.0
     Author: AlHaimi
+    Text Domain: wcpdomain
+    Domain Path: /languages
  */
 
 class WordCountAndTimePlugin
@@ -33,7 +35,7 @@ class WordCountAndTimePlugin
         }
 
         if (get_option('wcp_wordcount', '1')) {
-            $html .= "This post has " . $wordCount . " words.<br>";
+            $html .= __('This post has', 'wcpdomain') . " " . $wordCount . " " . __('words', 'wcpdomain') . ".<br>";
         }
 
         if (get_option('wcp_charactercount', '1')) {
@@ -100,7 +102,7 @@ class WordCountAndTimePlugin
     }
     function adminPage()
     {
-        add_options_page('Word Count Settings', 'Word Count', 'manage_options', 'word-count-settings-page', array($this, 'ourHTML'));
+        add_options_page('Word Count Settings', __('Word Count', 'wcpdomain'), 'manage_options', 'word-count-settings-page', array($this, 'ourHTML'));
     }
 
     function ourHTML()
