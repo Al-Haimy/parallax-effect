@@ -1,5 +1,6 @@
 <?php
 
+
 /*
     Plugin Name: Al-haimi Hero 
     Descripption: Herro for dynamic custom post
@@ -16,6 +17,11 @@ class WordCountAndTimePlugin
         add_action('admin_menu', array($this, 'adminPage'));
         add_action('admin_init', array($this, 'settings'));
         add_filter('the_content', array($this, 'ifWrap'));
+        add_action('init', array($this, 'languages'));
+    }
+    function languages()
+    {
+        load_plugin_textdomain('wcpdomain', false, dirname(plugin_basename(__FILE__)) . '/languages');
     }
     function ifWrap($content)
     {
