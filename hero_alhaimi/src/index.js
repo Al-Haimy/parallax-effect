@@ -2,15 +2,68 @@ wp.blocks.registerBlockType("ourplugin/are-you-paying-attention", {
   title: "Are you Paying Attention?",
   icon: "smilye",
   category: "common",
-  edit: function () {
+  attributes: {
+    skyColor: { type: "string" },
+    grassColor: { type: "string" },
+  },
+  edit: function (props) {
+    function updateSkyColor(e) {
+      props.setAttributes({ skyColor: e.target.value });
+    }
+    function updateGrassColor(e) {
+      props.setAttributes({ grassColor: e.target.value });
+    }
     return (
       <div>
-        <p>Hello, this is a paragraph</p>
-        <h4> Hithere</h4>
+        <input
+          type="text"
+          name=""
+          placeholder="sky color"
+          id=""
+          onChange={updateSkyColor}
+          value={props.attributes.skyColor}
+        />
+        <input
+          type="text"
+          name=""
+          id=""
+          placeholder="grass color"
+          onChange={updateGrassColor}
+          value={props.attributes.grassColor}
+        />
       </div>
     );
   },
-  save: function () {
-    return wp.element.createElement("h1", null, "This is the frontend.");
+  save: function (props) {
+    return (
+      <>
+        <h4>
+          Today the Sky is{" "}
+          <span className="skyColor">{props.attributes.skyColor}</span> and the
+          grass is{" "}
+          <span className="grassColor">{props.attributes.grassColor}</span>.
+        </h4>
+      </>
+    );
   },
+  deprecated: [
+    {
+      attributes: {
+        skyColor: { type: "string" },
+        grassColor: { type: "string" },
+      },
+      save: function (props) {
+        return (
+          <>
+            <p>
+              Today the Sky is{" "}
+              <span className="skyColor">{props.attributes.skyColor}</span> and
+              the grass is{" "}
+              <span className="grassColor">{props.attributes.grassColor}</span>.
+            </p>
+          </>
+        );
+      },
+    },
+  ],
 });
